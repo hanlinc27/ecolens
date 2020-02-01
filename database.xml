@@ -1,3 +1,47 @@
-<item><key>1</key><value>Milk Jugs</value></item>
-<item><key>2</key><value>Cleaning Agents</value></item>
+<!-- Polyethlyene - 1-->
+<item><key>Water Bottle</key><value>1</value></item>
+<item><key>Soft Drink</key><value>1</value></item>
+<item><key>Salad Dressing</key><value>1</value></item>
+<item><key>Peanut Butter</key><value>1</value></item>
+<item><key>Comb</key><value>1</value></item>
+<item><key>Tote Bag</key><value>1</value></item>
+
+<!-- High-Density Polyethylene - 2-->
+<item><key>Milk Jug</key><value>2</value></item>
+<item><key>Shampoo Bottle</key><value>2</value></item>
+<item><key>Cleaning</key><value>2</value></item>
+<item><key>Bleach</key><value>2</value></item>
+<item><key>Soap</key><value>2</value></item>
+
+<!-- PVC - 3 -->
+<item><key>Plumbing Pipe</key><value>3</value></item>
+<item><key>Grocery Bags</key><value>3</value></item>
+<item><key>Tile</key><value>3</value></item>
+<item><key>Cling Films</key><value>3</value></item>
+<item><key>Shoes</key><value>3</value></item>
+<item><key>Gutters</key><value>3</value></item>
+<item><key>Window Frames</key><value>3</value></item>
+<item><key>Ducts</key><value>3</value></item>
+
+<!-- Low-Density Polyethylene - 4 -->
+<item><key>Cling wrap</key><value>4</value></item>
+<item><key>Sandwich Bags</key><value>4</value></item>
+<item><key>Condiment bottle</key><value>4</value></item>
+<item><key>Mustard Bottle</key><value>4</value></item>
+<item><key>Ketchup Bottle</key><value>4</value></item>
+<item><key>Frozen Food Bags</key><value>4</value></item>
+
+<!-- 5 - Polypropylene -->
+<item><key>Diapers</key><value>5</value></item>
+<item><key>Tupperware</key><value>5</value></item>
+<item><key>Margarine</key><value>5</value></item>
+
+
+
+
+
+
+
+
+<item><key>2</key><value>Milk Jug</value></item>
 <item><key>3</key><value>Laundry Detergents</value></item>
