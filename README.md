@@ -26,7 +26,7 @@ git clone https://github.com/hanlinc27/ecolens.git
 ### Figma Landing File 
 	* Made originally to visualize the UI before diving into the backend! 
 
-![screenshots][https://user-images.githubusercontent.com/19617248/73609896-f756d100-459f-11ea-9b6b-dd07fa4e110b.png]
+![screenshots](https://user-images.githubusercontent.com/19617248/73609896-f756d100-459f-11ea-9b6b-dd07fa4e110b.png)
 
 Thank you for the mentors who assisted and the organizers for running this wonderful event! :) 
 Made with **<3** by Emma, Hanlin, Krystal, Mathurah
