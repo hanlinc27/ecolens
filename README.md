@@ -1,6 +1,6 @@
 # ReadMe.md
 ## ElleHacks 2020 Project 
-Revolutionizing the way we recycle - making something new again! 
+Revolutionizing the way we recycle - see change differently! 
 
 ### Our Tech Stack:
 	* Firebase ML
