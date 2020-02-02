@@ -84,19 +84,6 @@ public class SearchEngine {
       throw new Exception("Failed to get object image data!");
     }
 
-//    FirebaseAutoMLRemoteModel remoteModel = new FirebaseAutoMLRemoteModel.Builder("recycling_items_2020211882").build();
-//
-//      FirebaseModelDownloadConditions conditions = new FirebaseModelDownloadConditions.Builder()
-//              .requireWifi()
-//              .build();
-//      FirebaseModelManager.getInstance().download(remoteModel, conditions)
-//              .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                  @Override
-//                  public void onComplete(@NonNull Task<Void> task) {
-//                      // Success.
-//                  }
-//              });
-
     FirebaseAutoMLLocalModel localModel = new FirebaseAutoMLLocalModel.Builder()
             .setAssetFilePath("model/manifest.json").build();
 
@@ -104,7 +91,7 @@ public class SearchEngine {
     try {
       FirebaseVisionOnDeviceAutoMLImageLabelerOptions options =
               new FirebaseVisionOnDeviceAutoMLImageLabelerOptions.Builder(localModel)
-                      .setConfidenceThreshold(0.2f)  // Evaluate your model in the Firebase console
+                      .setConfidenceThreshold(0.3f)  // Evaluate your model in the Firebase console
                       // to determine an appropriate value.
                       .build();
       labeler = FirebaseVision.getInstance().getOnDeviceAutoMLImageLabeler(options);

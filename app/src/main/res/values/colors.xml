@@ -21,5 +21,7 @@
   <color name="barcode_field_value">#797979</color>
   <color name="barcode_field_box_stroke">#757575</color>
   <color name="product_description">#5F6368</color>
-  <color name="background">#EBF5F8</color>
+  <color name="darkBlue">#191847</color>
+  <color name="lightGreen">#58C3A9</color>
+  <color name="darkGrey">#333333</color>
 </resources>
