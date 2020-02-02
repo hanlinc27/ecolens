@@ -17,12 +17,26 @@
 package com.google.firebase.ml.md.java.productsearch;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
+
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Tasks;
+import com.google.firebase.ml.common.FirebaseMLException;
 import com.google.firebase.ml.md.java.objectdetection.DetectedObject;
+import com.google.firebase.ml.vision.FirebaseVision;
+import com.google.firebase.ml.vision.automl.FirebaseAutoMLLocalModel;
+import com.google.firebase.ml.vision.common.FirebaseVisionImage;
+import com.google.firebase.ml.vision.label.FirebaseVisionImageLabel;
+import com.google.firebase.ml.vision.label.FirebaseVisionImageLabeler;
+import com.google.firebase.ml.vision.label.FirebaseVisionOnDeviceAutoMLImageLabelerOptions;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -63,13 +77,69 @@ public class SearchEngine {
   }
 
   private static JsonObjectRequest createRequest(DetectedObject searchingObject) throws Exception {
-    byte[] objectImageData = searchingObject.getImageData();
+      Bitmap objectImageData = searchingObject.getBitmap();
+
+      //byte[] objectImageData = searchingObject.getImageData();
     if (objectImageData == null) {
       throw new Exception("Failed to get object image data!");
     }
 
-    // Hooks up with your own product search backend here.
-    throw new Exception("Hooks up with your own product search backend.");
+//    FirebaseAutoMLRemoteModel remoteModel = new FirebaseAutoMLRemoteModel.Builder("recycling_items_2020211882").build();
+//
+//      FirebaseModelDownloadConditions conditions = new FirebaseModelDownloadConditions.Builder()
+//              .requireWifi()
+//              .build();
+//      FirebaseModelManager.getInstance().download(remoteModel, conditions)
+//              .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                  @Override
+//                  public void onComplete(@NonNull Task<Void> task) {
+//                      // Success.
+//                  }
+//              });
+
+    FirebaseAutoMLLocalModel localModel = new FirebaseAutoMLLocalModel.Builder()
+            .setAssetFilePath("model/manifest.json").build();
+
+    FirebaseVisionImageLabeler labeler;
+    try {
+      FirebaseVisionOnDeviceAutoMLImageLabelerOptions options =
+              new FirebaseVisionOnDeviceAutoMLImageLabelerOptions.Builder(localModel)
+                      .setConfidenceThreshold(0.2f)  // Evaluate your model in the Firebase console
+                      // to determine an appropriate value.
+                      .build();
+      labeler = FirebaseVision.getInstance().getOnDeviceAutoMLImageLabeler(options);
+
+      FirebaseVisionImage image = FirebaseVisionImage.fromBitmap(objectImageData);
+//      FirebaseVisionImage image = FirebaseVisionImage.fromByteArray(objectImageData
+//              , new FirebaseVisionImageMetadata.Builder().setHeight(1280).setWidth(720)
+//                      .setFormat(FirebaseVisionImageMetadata.IMAGE_FORMAT_NV21).setRotation(ROTATION_0).build());
+
+      labeler.processImage(image)
+              .addOnSuccessListener(new OnSuccessListener<List<FirebaseVisionImageLabel>>() {
+                @Override
+                public void onSuccess(List<FirebaseVisionImageLabel> labels) {
+                  // Task completed successfully
+                  System.out.println("nice");
+
+                  for (FirebaseVisionImageLabel label: labels){
+                    String text = label.getText();
+                    System.out.println(text);
+                 }
+
+                }
+              })
+              .addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                  // Task failed with an exception
+                  // ...
+                }
+              });
+    } catch (FirebaseMLException e) {
+      // ...
+    }
+
+    throw new Exception ("exception");
   }
 
   public void shutdown() {

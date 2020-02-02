@@ -16,23 +16,26 @@
 
 package com.google.firebase.ml.md.java.camera;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import android.app.Application;
 import android.content.Context;
+
 import androidx.annotation.MainThread;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
-import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode;
+
 import com.google.firebase.ml.md.java.objectdetection.DetectedObject;
 import com.google.firebase.ml.md.java.productsearch.Product;
 import com.google.firebase.ml.md.java.productsearch.SearchEngine.SearchResultListener;
 import com.google.firebase.ml.md.java.productsearch.SearchedObject;
 import com.google.firebase.ml.md.java.settings.PreferenceUtils;
+import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /** View model for handling application workflow based on camera preview. */
 public class WorkflowModel extends AndroidViewModel implements SearchResultListener {
