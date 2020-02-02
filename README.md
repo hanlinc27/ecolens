@@ -26,7 +26,7 @@ git clone https://github.com/hanlinc27/ecolens.git
 ### Figma Landing File 
 	* Made originally to visualize the UI before diving into the backend! 
 
-![Figma](<iframe style="border: none;" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FnNwOVOY3YwKk7jLHoi6lXa%2Fecolens%3Fnode-id%3D0%253A1" allowfullscreen></iframe>)
+<iframe style="border: none;" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FnNwOVOY3YwKk7jLHoi6lXa%2Fecolens%3Fnode-id%3D0%253A1" allowfullscreen></iframe>
 
 Thank you for the mentors who assisted and the organizers for running this wonderful event! :) 
 Made with **<3** by Emma, Hanlin, Krystal, Mathurah
