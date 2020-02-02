@@ -27,24 +27,27 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.common.base.Objects;
 import com.google.common.collect.ImmutableList;
 import com.google.firebase.ml.md.R;
+import com.google.firebase.ml.md.java.camera.CameraSource;
+import com.google.firebase.ml.md.java.camera.CameraSourcePreview;
 import com.google.firebase.ml.md.java.camera.GraphicOverlay;
 import com.google.firebase.ml.md.java.camera.WorkflowModel;
 import com.google.firebase.ml.md.java.camera.WorkflowModel.WorkflowState;
-import com.google.firebase.ml.md.java.camera.CameraSource;
-import com.google.firebase.ml.md.java.camera.CameraSourcePreview;
 import com.google.firebase.ml.md.java.objectdetection.MultiObjectProcessor;
 import com.google.firebase.ml.md.java.objectdetection.ProminentObjectProcessor;
 import com.google.firebase.ml.md.java.productsearch.BottomSheetScrimView;
@@ -54,6 +57,7 @@ import com.google.firebase.ml.md.java.productsearch.SearchEngine;
 import com.google.firebase.ml.md.java.productsearch.SearchedObject;
 import com.google.firebase.ml.md.java.settings.PreferenceUtils;
 import com.google.firebase.ml.md.java.settings.SettingsActivity;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -79,7 +83,8 @@ public class LiveObjectDetectionActivity extends AppCompatActivity implements On
   private BottomSheetBehavior<View> bottomSheetBehavior;
   private BottomSheetScrimView bottomSheetScrimView;
   private RecyclerView productRecyclerView;
-  private TextView bottomSheetTitleView;
+  public static TextView bottomSheetTitleView;
+  public static Button bottomSheetButton;
   private Bitmap objectThumbnailForBottomSheet;
   private boolean slidingSheetUpFromHiddenState;
 
@@ -267,6 +272,8 @@ public class LiveObjectDetectionActivity extends AppCompatActivity implements On
     bottomSheetScrimView.setOnClickListener(this);
 
     bottomSheetTitleView = findViewById(R.id.bottom_sheet_title);
+    bottomSheetButton = (Button) findViewById(R.id.bottom_sheet_button);
+//    bottomSheetButton.setOnClickListener(this);
     productRecyclerView = findViewById(R.id.product_recycler_view);
     productRecyclerView.setHasFixedSize(true);
     productRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -307,10 +314,10 @@ public class LiveObjectDetectionActivity extends AppCompatActivity implements On
           if (searchedObject != null) {
             List<Product> productList = searchedObject.getProductList();
             objectThumbnailForBottomSheet = searchedObject.getObjectThumbnail();
-            bottomSheetTitleView.setText(
-                getResources()
-                    .getQuantityString(
-                        R.plurals.bottom_sheet_title, productList.size(), productList.size()));
+//            bottomSheetTitleView.setText(
+//                getResources()
+//                    .getQuantityString(
+//                        R.plurals.bottom_sheet_title, productList.size(), productList.size()));
             productRecyclerView.setAdapter(new ProductAdapter(productList));
             slidingSheetUpFromHiddenState = true;
             bottomSheetBehavior.setPeekHeight(preview.getHeight() / 2);
@@ -413,5 +420,9 @@ public class LiveObjectDetectionActivity extends AppCompatActivity implements On
     if (shouldPlaySearchButtonEnteringAnimation && !searchButtonAnimator.isRunning()) {
       searchButtonAnimator.start();
     }
+  }
+
+  public void open_information (View view) {
+    startActivity(new Intent(this, InformationActivity.class));
   }
 }

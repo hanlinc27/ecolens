@@ -17,11 +17,13 @@
 package com.google.firebase.ml.md.java.camera;
 
 import android.os.SystemClock;
-import android.util.Log;
+
 import androidx.annotation.GuardedBy;
+
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 import com.google.firebase.ml.vision.common.FirebaseVisionImageMetadata;
+
 import java.nio.ByteBuffer;
 
 /** Abstract base class of {@link FrameProcessor}. */
@@ -71,7 +73,7 @@ public abstract class FrameProcessorBase<T> implements FrameProcessor {
       detectInImage(image)
           .addOnSuccessListener(
               results -> {
-                Log.d(TAG, "Latency is: " + (SystemClock.elapsedRealtime() - startMs));
+//                Log.d(TAG, "Latency is: " + (SystemClock.elapsedRealtime() - startMs));
                 FrameProcessorBase.this.onSuccess(image, results, graphicOverlay);
                 processLatestFrame(graphicOverlay);
               })

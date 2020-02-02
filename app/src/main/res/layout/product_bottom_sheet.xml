@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical">
-
   <TextView
       android:id="@+id/bottom_sheet_title"
       android:layout_width="match_parent"
@@ -14,7 +13,24 @@
       android:fontFamily="sans-serif"
       android:maxLines="1"
       android:textColor="@color/black"
-      android:textSize="@dimen/bottom_sheet_title_size"/>
+      android:textSize="@dimen/bottom_sheet_title_size"
+      android:text="Let's make something cool with"
+      android:textAlignment="center"
+      android:paddingTop="20dp"/>
+
+  <Button
+      android:id="@+id/bottom_sheet_button"
+      android:layout_width="250dp"
+      android:layout_gravity="center"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/bottom_sheet_title_margin"
+      android:ellipsize="end"
+      android:fontFamily="sans-serif"
+      android:maxLines="1"
+      android:textColor="@color/black"
+      android:textSize="@dimen/bottom_sheet_title_size"
+      android:layout_marginTop="-20dp"
+      android:onClick="open_information"/>
 
   <View
       android:layout_width="match_parent"

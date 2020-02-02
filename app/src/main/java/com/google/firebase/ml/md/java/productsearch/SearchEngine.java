@@ -23,12 +23,12 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.ml.common.FirebaseMLException;
+import com.google.firebase.ml.md.java.LiveObjectDetectionActivity;
 import com.google.firebase.ml.md.java.objectdetection.DetectedObject;
 import com.google.firebase.ml.vision.FirebaseVision;
 import com.google.firebase.ml.vision.automl.FirebaseAutoMLLocalModel;
@@ -46,6 +46,8 @@ import java.util.concurrent.Executors;
 public class SearchEngine {
 
   private static final String TAG = "SearchEngine";
+  private static String successful_label = "";
+  public static String formatted_label = "";
 
   public interface SearchResultListener {
     void onSearchCompleted(DetectedObject object, List<Product> productList);
@@ -62,7 +64,10 @@ public class SearchEngine {
   public void search(DetectedObject object, SearchResultListener listener) {
     // Crops the object image out of the full image is expensive, so do it off the UI thread.
     Tasks.call(requestCreationExecutor, () -> createRequest(object))
-        .addOnSuccessListener(productRequest -> searchRequestQueue.add(productRequest.setTag(TAG)))
+        .addOnSuccessListener(productRequest -> {
+            List<Product> list = new ArrayList<>();
+            listener.onSearchCompleted(object, list);
+        })
         .addOnFailureListener(
             e -> {
               Log.e(TAG, "Failed to create product search request!", e);
@@ -76,10 +81,9 @@ public class SearchEngine {
             });
   }
 
-  private static JsonObjectRequest createRequest(DetectedObject searchingObject) throws Exception {
+  private static String createRequest(DetectedObject searchingObject) throws Exception {
       Bitmap objectImageData = searchingObject.getBitmap();
 
-      //byte[] objectImageData = searchingObject.getImageData();
     if (objectImageData == null) {
       throw new Exception("Failed to get object image data!");
     }
@@ -97,9 +101,6 @@ public class SearchEngine {
       labeler = FirebaseVision.getInstance().getOnDeviceAutoMLImageLabeler(options);
 
       FirebaseVisionImage image = FirebaseVisionImage.fromBitmap(objectImageData);
-//      FirebaseVisionImage image = FirebaseVisionImage.fromByteArray(objectImageData
-//              , new FirebaseVisionImageMetadata.Builder().setHeight(1280).setWidth(720)
-//                      .setFormat(FirebaseVisionImageMetadata.IMAGE_FORMAT_NV21).setRotation(ROTATION_0).build());
 
       labeler.processImage(image)
               .addOnSuccessListener(new OnSuccessListener<List<FirebaseVisionImageLabel>>() {
@@ -110,9 +111,10 @@ public class SearchEngine {
 
                   for (FirebaseVisionImageLabel label: labels){
                     String text = label.getText();
-                    System.out.println(text);
+                    successful_label = labels.get(0).getText();
                  }
-
+                    formatted_label = display_name(successful_label);
+                    LiveObjectDetectionActivity.bottomSheetButton.setText(formatted_label);
                 }
               })
               .addOnFailureListener(new OnFailureListener() {
@@ -126,11 +128,30 @@ public class SearchEngine {
       // ...
     }
 
-    throw new Exception ("exception");
+    return successful_label;
   }
 
   public void shutdown() {
     searchRequestQueue.cancelAll(TAG);
     requestCreationExecutor.shutdown();
   }
+
+  public static String display_name(String label) {
+      if (label.equals("plastic_cups"))
+          return "Plastic Cups";
+      else if (label.equals("water_bottle_caps"))
+          return "Bottle Caps";
+      else if (label.equals("milk_cartons"))
+          return "Milk Cartons";
+      else if (label.equals("paper_coffee_cups"))
+          return "Coffee Cups";
+      else if (label.equals("soda_cans"))
+          return "Soda Cans";
+      else if (label.equals("plastic_bags"))
+          return "Plastic Bags";
+      else if (label.equals("plastic_bottles"))
+          return "Plastic Bottles";
+      else return "";
+  }
+
 }

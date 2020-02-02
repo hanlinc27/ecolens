@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        android:gravity="center_vertical"
+        android:text="let's make something cool with:"
+        android:textAlignment="center"
+        android:textColor="@color/darkGrey"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Placeholder"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textColor="@color/darkBlue"
+        android:textSize="30dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center_vertical" />
+
+    <Button
+        android:id="@+id/learn_button"
+        android:layout_width="190dp"
+        android:layout_height="75dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/darkGreen"
+        android:text="learn more"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/make_button"
+        android:layout_width="190dp"
+        android:layout_height="75dp"
+        android:layout_marginLeft="205dp"
+        android:layout_marginTop="-75dp"
+        android:backgroundTint="@color/lightGreen"
+        android:text="start project"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginLeft="0dp"
+        android:backgroundTint="#44000000"
+        android:text="Scan another item"
+        android:textAllCaps="false"
+        android:textColor="@color/darkGrey"
+        android:textSize="20dp" />
+
+</LinearLayout>
