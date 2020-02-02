@@ -1,6 +1,7 @@
 # ReadMe.md
 ## ElleHacks 2020 Project 
 Revolutionizing the way we recycle - see change differently! 
+An end to end implemented Android application. 
 
 ### Our Tech Stack:
 	* Firebase ML
