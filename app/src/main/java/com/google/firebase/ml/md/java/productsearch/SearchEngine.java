@@ -151,7 +151,9 @@ public class SearchEngine {
           return "Plastic Bags";
       else if (label.equals("plastic_bottles"))
           return "Plastic Bottles";
-      else return "";
+      else if (label.equals("plastic_bags"))
+          return "Plastic Bags";
+      else return "Please try again";
   }
 
 }

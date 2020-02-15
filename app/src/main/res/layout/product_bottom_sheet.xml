@@ -14,23 +14,31 @@
       android:maxLines="1"
       android:textColor="@color/black"
       android:textSize="@dimen/bottom_sheet_title_size"
-      android:text="Let's make something cool with"
+      android:text="let's make something cool with"
       android:textAlignment="center"
-      android:paddingTop="20dp"/>
+      android:paddingTop="5dp"/>
 
   <Button
       android:id="@+id/bottom_sheet_button"
-      android:layout_width="250dp"
+      android:layout_width="200dp"
       android:layout_gravity="center"
-      android:layout_height="wrap_content"
-      android:layout_margin="@dimen/bottom_sheet_title_margin"
+      android:layout_height="50dp"
       android:ellipsize="end"
       android:fontFamily="sans-serif"
       android:maxLines="1"
-      android:textColor="@color/black"
+      android:textColor="@color/white"
       android:textSize="@dimen/bottom_sheet_title_size"
-      android:layout_marginTop="-20dp"
-      android:onClick="open_information"/>
+      android:layout_marginTop="-15dp"
+      android:onClick="open_information"
+      android:textAllCaps="false"
+      android:backgroundTint="@color/darkBlue" />
+
+  <ImageView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:drawable="@drawable/logo"
+      android:layout_marginTop="20dp"
+      android:layout_marginBottom="10dp"/>
 
   <View
       android:layout_width="match_parent"

@@ -28,18 +28,18 @@
         android:textSize="30dp" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/fact_image"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_marginTop="50dp"
-        android:layout_gravity="center_vertical" />
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="45dp" />
 
     <Button
         android:id="@+id/learn_button"
-        android:layout_width="190dp"
+        android:layout_width="205dp"
         android:layout_height="75dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="25dp"
         android:backgroundTint="@color/darkGreen"
         android:text="learn more"
         android:textAllCaps="false"
@@ -48,12 +48,13 @@
 
     <Button
         android:id="@+id/make_button"
-        android:layout_width="190dp"
+        android:layout_width="205dp"
         android:layout_height="75dp"
         android:layout_marginLeft="205dp"
         android:layout_marginTop="-75dp"
+        android:layout_marginRight="0dp"
         android:backgroundTint="@color/lightGreen"
-        android:text="start project"
+        android:text="start a project"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20dp" />
@@ -61,10 +62,11 @@
     <Button
         android:id="@+id/back_button"
         android:layout_width="match_parent"
+        android:layout_marginTop="25dp"
         android:layout_height="75dp"
         android:layout_marginLeft="0dp"
-        android:backgroundTint="#44000000"
-        android:text="Scan another item"
+        android:backgroundTint="@color/white"
+        android:text="scan another item"
         android:textAllCaps="false"
         android:textColor="@color/darkGrey"
         android:textSize="20dp" />

@@ -35,6 +35,7 @@
         android:text="see change differently"
         android:textAlignment="center"
         android:textColor="@color/lightGreen"
+        android:textStyle="bold"
         android:textSize="20dp" />
 
     <ImageView

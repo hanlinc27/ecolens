@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +30,11 @@ public class InformationActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information);
 
+        int UI_OPTIONS = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION;
+        getWindow().getDecorView().setSystemUiVisibility(UI_OPTIONS);
+
         project = findViewById(R.id.make_button);
+
         project.setOnClickListener(this);
         info = findViewById(R.id.learn_button);
         info.setOnClickListener(this);
@@ -38,6 +43,16 @@ public class InformationActivity extends AppCompatActivity implements View.OnCli
 
         title = findViewById(R.id.textView2);
         title.setText(SearchEngine.formatted_label);
+
+        if (SearchEngine.formatted_label.equals("Please try again"))
+            finish();
+
+        Random rand = new Random();
+        int random_num = rand.nextInt(3);
+        ImageView img = (ImageView) findViewById(R.id.fact_image);
+        if (random_num == 0) img.setImageResource(R.drawable.graph_1);
+        else if (random_num == 1) img.setImageResource(R.drawable.graph_2);
+        else if (random_num == 2) img.setImageResource(R.drawable.graph_3);
     }
 
     @Override
@@ -48,6 +63,21 @@ public class InformationActivity extends AppCompatActivity implements View.OnCli
             Intent viewIntent = new Intent (Intent.ACTION_VIEW, Uri.parse(choose_url(label)));
             startActivity(viewIntent);
         } else if (id==R.id.learn_button) {
+            Random rand = new Random();
+            int random_num = rand.nextInt(9);
+
+            String general [] = {"https://www.worldwildlife.org/initiatives/plastics",
+            "https://www.theguardian.com/environment/2018/apr/16/scientists-accidentally-create-mutant-enzyme-that-eats-plastic-bottles",
+            "https://storyofstuff.org/the-story-of-plastic/the-problem-with-plastic/",
+            "https://www.vox.com/the-highlight/2019/4/9/18274131/plastic-waste-pollution-bacteria-digestion",
+            "https://www.scientificamerican.com/article/from-fish-to-humans-a-microplastic-invasion-may-be-taking-a-toll/",
+            "https://magpi.raspberrypi.org/articles/hydroponic-gardening",
+            "https://tutorials-raspberrypi.com/build-your-own-automatic-raspberry-pi-greenhouse/",
+            "https://theecohub.ca/zero-waste-shopping-guide-toronto/",
+            "https://www.toronto.ca/services-payments/recycling-organics-garbage/long-term-waste-strategy/waste-reduction/community-reduce-reuse-programs/"};
+
+            Intent viewIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(general[random_num]));
+            startActivity(viewIntent);
 
         } else if (id==R.id.back_button)
             finish();
@@ -66,7 +96,7 @@ public class InformationActivity extends AppCompatActivity implements View.OnCli
                     "https://www.pinterest.ca/pin/346777240052712947/"};
             return urls[random_num];
         }
-        else if (label.equals("Bottle Caps")) {
+        else if (label.equals("bottle caps")) {
             String[] urls = {"https://www.pinterest.ca/pin/8866530487731454/",
                     "https://www.pinterest.ca/pin/592856738431291976/",
                     "https://www.pinterest.ca/pin/117023290299379688/"};
@@ -100,6 +130,12 @@ public class InformationActivity extends AppCompatActivity implements View.OnCli
             String[] urls = {"https://www.pinterest.ca/pin/732327589387624333/",
                     "https://www.kitchentableclassroom.com/weaving-for-kids-a-recycled-plastic-bottle-craft/",
                     "http://www.lovefrombe.com/2013/07/decorative-camera.html#.XjXr7OLQiu6"};
+            return urls[random_num];
+        }
+        else if (label.equals("plastic bags")) {
+            String[] urls = {"https://www.pinterest.ca/pin/279012139395939527/",
+                    "https://www.pinterest.ca/pin/203717583131472326/",
+                    "https://www.pinterest.ca/pin/670473463256559229/"};
             return urls[random_num];
         }
 
