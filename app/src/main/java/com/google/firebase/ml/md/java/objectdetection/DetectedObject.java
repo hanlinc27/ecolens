@@ -17,14 +17,12 @@
 package com.google.firebase.ml.md.java.objectdetection;
 
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Rect;
-import android.util.Log;
+
 import androidx.annotation.Nullable;
+
 import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 import com.google.firebase.ml.vision.objects.FirebaseVisionObject;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 
 /**
  * Holds the detected object and its related image info.
@@ -81,17 +79,17 @@ public class DetectedObject {
     return bitmap;
   }
 
-  @Nullable
-  public synchronized byte[] getImageData() {
-    if (jpegBytes == null) {
-      try (ByteArrayOutputStream stream = new ByteArrayOutputStream()) {
-        getBitmap().compress(CompressFormat.JPEG, /* quality= */ 100, stream);
-        jpegBytes = stream.toByteArray();
-      } catch (IOException e) {
-        Log.e(TAG, "Error getting object image data!");
-      }
-    }
-
-    return jpegBytes;
-  }
+//  @Nullable
+//  public synchronized byte[] getImageData() {
+//    if (jpegBytes == null) {
+//      try (ByteArrayOutputStream stream = new ByteArrayOutputStream()) {
+//        getBitmap().compress(CompressFormat.JPEG, /* quality= */ 100, stream);
+//        jpegBytes = stream.toByteArray();
+//      } catch (IOException e) {
+//        Log.e(TAG, "Error getting object image data!");
+//      }
+//    }
+//
+//    return jpegBytes;
+ // }
 }

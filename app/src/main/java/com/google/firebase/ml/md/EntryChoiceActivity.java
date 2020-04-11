@@ -16,20 +16,13 @@
 
 package com.google.firebase.ml.md;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Entry activity to select the language.
@@ -39,10 +32,11 @@ public class EntryChoiceActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle bundle) {
         super.onCreate(bundle);
-
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         setContentView(R.layout.activity_entry_choice);
+    }
 
+    public void open_camera(View view) {
         startActivity(new Intent(this,
                 com.google.firebase.ml.md.java.LiveObjectDetectionActivity.class));
     }
