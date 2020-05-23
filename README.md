@@ -3,13 +3,13 @@
 Revolutionizing the way we recycle - see change differently! 
 An end to end implemented Android application. 
 
-### Our Tech Stack:
+## Tech Stack:
 	* Firebase ML
 	* Google Cloud Auto ML : for deep learning
 	* Android Studio 
 	* Java 
 
-### What it Does:
+## What it Does:
 Through **ecolens** revolutionize the way you recycle through a simple Android app interface that recognizes different “garbage” items from a live video stream through deep learning. After identifying the object, it returns various DIY and craft projects that can be made with the items! It brings together people of all ages in a fun matter while creating a **_big impact_** in the world around us. 
 
 ## To Use our App: 
