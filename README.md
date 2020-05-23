@@ -22,7 +22,7 @@ git clone https://github.com/hanlinc27/ecolens.git
 ```
 
 ## Walkthrough
-
+![gif](ecolens.gif)
 
 ## SlideDeck
 The slidedeck that breaks down the problem further can be accessed [here!](https://docs.google.com/presentation/d/1LfMc6McWfyTJ_kiFSJQ6GbfnBk9NROynrXSqpWp7BLU/edit?usp=sharing)
