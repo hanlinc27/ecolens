@@ -1,5 +1,5 @@
 # ReadMe.md
-## ElleHacks 2020 Project 
+## ElleHacks 2020 Project - Runner-up RBC Most Innovative Project out of 400 students
 Revolutionizing the way we recycle - see change differently! 
 An end to end implemented Android application. 
 
